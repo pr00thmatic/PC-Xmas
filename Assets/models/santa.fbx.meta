@@ -1,0 +1,232 @@
+fileFormatVersion: 2
+guid: 5a86b9f1cb208a247889d88d1ef5e9d2
+timeCreated: 1513430059
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: arm_controller_L
+    100002: arm_controller_L_end
+    100004: arm_controller_R
+    100006: arm_controller_R_end
+    100008: arm_pole_L
+    100010: arm_pole_L_end
+    100012: arm_pole_R
+    100014: arm_pole_R_end
+    100016: Armature
+    100018: belly
+    100020: feet_L
+    100022: feet_R
+    100024: foot_roll_L
+    100026: foot_roll_R
+    100028: footControl_L
+    100030: footControl_R
+    100032: hat1
+    100034: hat2
+    100036: hat3
+    100038: hat3_end
+    100040: hat_control
+    100042: hat_control_end
+    100044: hat_pole
+    100046: hat_pole_end
+    100048: head
+    100050: heel_L
+    100052: heel_R
+    100054: IK_foot_L
+    100056: IK_foot_L_end
+    100058: IK_foot_R
+    100060: IK_foot_R_end
+    100062: IK_toe_L
+    100064: IK_toe_L_end
+    100066: IK_toe_R
+    100068: IK_toe_R_end
+    100070: knee_L
+    100072: knee_L_end
+    100074: knee_R
+    100076: knee_R_end
+    100078: leg_IK_L
+    100080: leg_IK_L_end
+    100082: leg_IK_R
+    100084: leg_IK_R_end
+    100086: lower_arm_L
+    100088: lower_arm_L_end
+    100090: lower_arm_R
+    100092: lower_arm_R_end
+    100094: lower_knee_L
+    100096: lower_knee_R
+    100098: //RootNode
+    100100: Sphere
+    100102: target_view
+    100104: target_view_end
+    100106: toe_control_L
+    100108: toe_control_R
+    100110: toe_L
+    100112: toe_L_end
+    100114: toe_R
+    100116: toe_R_end
+    100118: toe_roll_L
+    100120: toe_roll_R
+    100122: torax
+    100124: upper_arm_L
+    100126: upper_arm_R
+    100128: upper_knee_L
+    100130: upper_knee_R
+    400000: arm_controller_L
+    400002: arm_controller_L_end
+    400004: arm_controller_R
+    400006: arm_controller_R_end
+    400008: arm_pole_L
+    400010: arm_pole_L_end
+    400012: arm_pole_R
+    400014: arm_pole_R_end
+    400016: Armature
+    400018: belly
+    400020: feet_L
+    400022: feet_R
+    400024: foot_roll_L
+    400026: foot_roll_R
+    400028: footControl_L
+    400030: footControl_R
+    400032: hat1
+    400034: hat2
+    400036: hat3
+    400038: hat3_end
+    400040: hat_control
+    400042: hat_control_end
+    400044: hat_pole
+    400046: hat_pole_end
+    400048: head
+    400050: heel_L
+    400052: heel_R
+    400054: IK_foot_L
+    400056: IK_foot_L_end
+    400058: IK_foot_R
+    400060: IK_foot_R_end
+    400062: IK_toe_L
+    400064: IK_toe_L_end
+    400066: IK_toe_R
+    400068: IK_toe_R_end
+    400070: knee_L
+    400072: knee_L_end
+    400074: knee_R
+    400076: knee_R_end
+    400078: leg_IK_L
+    400080: leg_IK_L_end
+    400082: leg_IK_R
+    400084: leg_IK_R_end
+    400086: lower_arm_L
+    400088: lower_arm_L_end
+    400090: lower_arm_R
+    400092: lower_arm_R_end
+    400094: lower_knee_L
+    400096: lower_knee_R
+    400098: //RootNode
+    400100: Sphere
+    400102: target_view
+    400104: target_view_end
+    400106: toe_control_L
+    400108: toe_control_R
+    400110: toe_L
+    400112: toe_L_end
+    400114: toe_R
+    400116: toe_R_end
+    400118: toe_roll_L
+    400120: toe_roll_R
+    400122: torax
+    400124: upper_arm_L
+    400126: upper_arm_R
+    400128: upper_knee_L
+    400130: upper_knee_R
+    4300000: Sphere
+    7400000: Armature|Fall
+    7400002: Armature|Jump
+    7400004: Armature|left foot slow
+    7400006: Armature|right foot slow
+    7400008: Armature|Run
+    7400010: Armature|Stand
+    7400012: Sphere|Fall
+    9500000: //RootNode
+    13700000: Sphere
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: af43915bf2f953f4d97e560feff7375d, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
