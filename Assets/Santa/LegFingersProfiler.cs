@@ -1,16 +1,14 @@
 using UnityEngine;
 using System.Collections;
 
-public class MobileControl : MonoBehaviour {
-    public float maxDistance = 1;
+public class LegFingerProfiler : MonoBehaviour {
+    public Side currentFoot = Side.right;
 
-    public float currentRightDistance = 0;
-    public float currentLeftDistance = 0;
+    private float _leftFingerDistance;
+    private float _rightFingerDistance;
 
-    public Side lastUsedFoot = Side.left;
-
-    public Vector3 _rightBeginning;
-    public Vector3 _leftBeginning;
+    private float _leftBeginning;
+    private float _rightBeginning;
 
     void Update () {
         foreach (Touch touch in Input.touches) {
@@ -22,16 +20,12 @@ public class MobileControl : MonoBehaviour {
         }
     }
 
-    public void Fall () {
-        Debug.Log("FALL!!!!" + Time.time);
-    }
-
     private void _SetupEnd (Touch touch) {
-        lastUsedFoot = lastUsedFoot == Side.right? Side.left : Side.right;
+        currentFoot = currentFoot == Side.right? Side.left : Side.right;
     }
 
     private void _SetupBeginning (Touch touch) {
-        if (lastUsedFoot == Side.right) {
+        if (currentFoot == Side.right) {
             _leftBeginning = touch.position;
         } else {
             _rightBeginning = touch.position;
