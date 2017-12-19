@@ -1,34 +1,27 @@
 using UnityEngine;
 using System.Collections;
 
-public class LegFingerProfiler : MonoBehaviour {
-    public Side currentFoot = Side.right;
+public class LegFingersProfiler : MonoBehaviour {
+    public FootActionProfile left;
+    public FootActionProfile right;
+    public FootActionProfile current;
 
-    private float _leftFingerDistance;
-    private float _rightFingerDistance;
-
-    private float _leftBeginning;
-    private float _rightBeginning;
+    void Start () {
+        current = left;
+    }
 
     void Update () {
         foreach (Touch touch in Input.touches) {
             if (touch.phase == TouchPhase.Began) {
-                _SetupBeginning(touch);
+                _SwitchFoot();
+                current.BeginAction(touch);
             } else if (touch.phase == TouchPhase.Ended) {
-                _SetupEnd(touch);
+                current.EndAction(touch);
             }
         }
     }
 
-    private void _SetupEnd (Touch touch) {
-        currentFoot = currentFoot == Side.right? Side.left : Side.right;
-    }
-
-    private void _SetupBeginning (Touch touch) {
-        if (currentFoot == Side.right) {
-            _leftBeginning = touch.position;
-        } else {
-            _rightBeginning = touch.position;
-        }
+    private void _SwitchFoot () {
+        current = current == left? right: left;
     }
 }

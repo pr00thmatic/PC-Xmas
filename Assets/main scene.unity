@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.43983984, g: 0.4882847, b: 0.5684974, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -300,13 +300,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 554395154}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.62937003, y: 0.47806853, z: -0.2375062, w: 0.56474304}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 69.711006, y: 135.97, z: 74.105}
 --- !u!1 &752398487
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,6 +316,7 @@ GameObject:
   m_Component:
   - component: {fileID: 752398488}
   - component: {fileID: 752398489}
+  - component: {fileID: 752398490}
   m_Layer: 0
   m_Name: modelo
   m_TagString: Untagged
@@ -348,10 +349,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f300e8265279c4aaa788cb7ef69dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistance: 1
-  currentRightDistance: 0
-  currentLeftDistance: 0
-  lastUsedFoot: 1
+  isProfiling: 0
+  profile: {fileID: 0}
+  left:
+    profile:
+      averageDistance: 0
+      maxDistance: 0
+    value: 0
+  right:
+    profile:
+      averageDistance: 0
+      maxDistance: 0
+    value: 0
+  current:
+    profile:
+      averageDistance: 0
+      maxDistance: 0
+    value: 0
+  smoothTreshold: 0.3
+--- !u!114 &752398490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 752398487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 933b3c64356bc8045a57ec3e6c6328b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  left:
+    averageDistance: 96.42785
+    maxDistance: 230.41534
+  right:
+    averageDistance: 136.23601
+    maxDistance: 227.171
+  current:
+    averageDistance: 96.42785
+    maxDistance: 230.41534
 --- !u!1 &943228571
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,8 +460,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 943228571}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: -0.09827973, y: -0.7834015, z: 0.12827732, w: -0.6001401}
+  m_LocalPosition: {x: -2.2640183, y: 0.8165292, z: 0.19000159}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

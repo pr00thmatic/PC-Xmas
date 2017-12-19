@@ -1,40 +1,74 @@
 using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(LegFingersProfiler))]
 public class MobileControl : MonoBehaviour {
-    public float maxDistance = 1;
+    public bool isProfiling;
 
-    public float currentRightDistance = 0;
-    public float currentLeftDistance = 0;
+    public LegFingersProfiler profile;
 
-    public Side lastUsedFoot = Side.left;
+    public FootAction left;
+    public FootAction right;
+    public FootAction current;
 
-    public Vector3 _rightBeginning;
-    public Vector3 _leftBeginning;
+    public float smoothTreshold = 0.3f;
+
+    private Animator _animator;
+    private bool _switchedFootOnFrame = false;
+
+    void Start () {
+        if (profile == null) {
+            profile = GetComponent<LegFingersProfiler>();
+        }
+
+        left = new FootAction(profile.left);
+        right = new FootAction(profile.right);
+        current = left;
+
+        _animator = Util.FindComponent<Animator>(transform);
+    }
 
     void Update () {
-        foreach (Touch touch in Input.touches) {
-            if (touch.phase == TouchPhase.Began) {
-                _SetupBeginning(touch);
-            } else if (touch.phase == TouchPhase.Ended) {
-                _SetupEnd(touch);
+        if (!isProfiling) {
+            _switchedFootOnFrame = false;
+            foreach (Touch touch in Input.touches) {
+                if (touch.phase == TouchPhase.Began) {
+                    _switchedFootOnFrame = true;
+                    SwitchFoot();
+                    current.BeginAction(touch);
+                } else if (touch.phase == TouchPhase.Moved) {
+                    current.ContinueAction(touch);
+                }
             }
+
+            UpdateAnimator();
+        }
+
+        if (profile.enabled && !isProfiling) {
+            profile.enabled = false;
+        } else if (!profile.enabled && isProfiling) {
+            profile.enabled = true;
         }
     }
 
-    public void Fall () {
-        Debug.Log("FALL!!!!" + Time.time);
+    public void SwitchFoot () {
+        current = current == left? right: left;
     }
 
-    private void _SetupEnd (Touch touch) {
-        lastUsedFoot = lastUsedFoot == Side.right? Side.left : Side.right;
-    }
-
-    private void _SetupBeginning (Touch touch) {
-        if (lastUsedFoot == Side.right) {
-            _leftBeginning = touch.position;
+    public void UpdateAnimator () {
+        _animator.SetBool("left foot down", current == left);
+        _animator.SetBool("right foot down", current == right);
+        
+        float value = current.value;
+        if (!_switchedFootOnFrame) {
+            float lastValue = _animator.GetFloat("foot value");
+            if (Mathf.Abs(lastValue - value) > smoothTreshold) {
+                value = value + smoothTreshold * Mathf.Sign(lastValue - value);
+            }
         } else {
-            _rightBeginning = touch.position;
+            value = 0;
         }
+        _animator.SetFloat("foot value", value);
+        _animator.SetFloat("speed", 0.8f);
     }
 }
