@@ -17,6 +17,7 @@ public class FootAction {
     }
 
     public void ContinueAction (Touch touch) {
-        value = (_beginning - touch.position).magnitude / profile.averageDistance;
+        value = (_beginning - touch.position).magnitude / (profile.averageDistance - 0.3f);
+        value = value < -1? -1: value > 1? 1: value;
     }
 }

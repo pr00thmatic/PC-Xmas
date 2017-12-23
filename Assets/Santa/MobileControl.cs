@@ -12,9 +12,11 @@ public class MobileControl : MonoBehaviour {
     public FootAction current;
 
     public float smoothTreshold = 0.3f;
+    public float speed = 5;
 
     private Animator _animator;
     private bool _switchedFootOnFrame = false;
+    private Vector3 _beginning;
 
     void Start () {
         if (profile == null) {
@@ -36,8 +38,17 @@ public class MobileControl : MonoBehaviour {
                     _switchedFootOnFrame = true;
                     SwitchFoot();
                     current.BeginAction(touch);
+                    _beginning = transform.position;
                 } else if (touch.phase == TouchPhase.Moved) {
                     current.ContinueAction(touch);
+
+                    Vector3 direction =
+                        new Vector3(touch.deltaPosition.x, 0,
+                                    touch.deltaPosition.y).normalized;
+                    transform.forward = direction;
+
+                    transform.position -= _beginning +
+                        direction * current.value * speed;
                 }
             }
 
