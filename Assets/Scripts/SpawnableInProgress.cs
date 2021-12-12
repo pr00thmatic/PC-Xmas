@@ -20,7 +20,7 @@ public class SpawnableInProgress : MonoBehaviour {
       return;
     }
 
-    transform.position = originalPosition + (santa.progress - progressWhenSpawned) * -Vector3.forward;
+    transform.position = originalPosition + (santa.Progress - progressWhenSpawned) * -Vector3.forward;
   }
 
   public void Initialize (ProgressDependantSpawner spawner) {
@@ -29,7 +29,7 @@ public class SpawnableInProgress : MonoBehaviour {
     transform.parent = spawner.folder;
     despawnDistance = spawner.despawnDistance;
     santa = spawner.santa;
-    progressWhenSpawned = spawner.santa.progress;
+    progressWhenSpawned = spawner.santa.Progress;
     originalPosition = transform.position;
   }
 }

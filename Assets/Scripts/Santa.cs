@@ -9,21 +9,15 @@ public class Santa : MonoBehaviour {
   public float tripTime = 0.25f;
 
   [Header("Information")]
-  public float progress = 0; // in meters o__O
+  public SmoothFloat progress;
+  public float Progress { set => progress.target = value; get => progress.current;  } // in meters o__O
   public int leg = 3; // 0 is left, 1 is right, 3 is both, -1 is none xD
-  public float targetProgress = 0;
-  public float progressToTargetVelocity = 0;
-  public float progressToTargetSmoothTime = 0.1f;
   public float timeSinceStroke = Mathf.Infinity;
   public bool advancedThisFrame = false;
   public float elapsedTripTime = 0;
 
   [Header("Initialization")]
   public Animator animator;
-
-  void OnEnable () {
-    targetProgress = progress;
-  }
 
   void Update () {
     if (leg == -1) {
@@ -37,9 +31,10 @@ public class Santa : MonoBehaviour {
     }
 
     advancedThisFrame = false;
-    if ((leg == 0 || leg == 3) && Input.GetKeyDown(KeyCode.D) || (leg == 1 || leg == 3) && Input.GetKeyDown(KeyCode.A)) {
-      targetProgress += metersByStep;
-      leg = (leg+1) % 2;
+    if (((leg == 0 || leg == 3) && Input.GetKeyDown(KeyCode.D)) ||
+        ((leg == 1 || leg == 3) && Input.GetKeyDown(KeyCode.A))) {
+      Progress += metersByStep;
+      leg = leg == 3? (Input.GetKeyDown(KeyCode.A)? 0: 1): (leg+1) % 2;
       advancedThisFrame = true;
     }
 
@@ -54,9 +49,7 @@ public class Santa : MonoBehaviour {
       leg = 3;
     }
 
-    progress = Mathf.SmoothDamp(progress, targetProgress,
-                                ref progressToTargetVelocity,
-                                progressToTargetSmoothTime);
+    progress.Update();
     animator.SetInteger("leg", leg);
     timeSinceStroke += Time.deltaTime;
   }
