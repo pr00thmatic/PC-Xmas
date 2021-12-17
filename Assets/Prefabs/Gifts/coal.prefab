@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1073740321917397406}
   - component: {fileID: 93041722629945231}
+  - component: {fileID: 6998259437820283781}
   m_Layer: 7
   m_Name: coal
   m_TagString: Untagged
@@ -45,7 +46,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
+  isCoal: 0
   target: {fileID: 0}
+  position: {fileID: 6998259437820283781}
+--- !u!114 &6998259437820283781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073740321917397407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdeb7a510c08585479821af3fec42d60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  despawnDistance: 20
+  progressWhenSpawned: -100
+  originalPosition: {x: 0, y: 0, z: 0}
+  nextThing: {fileID: 1073740321917397406}
 --- !u!1 &1073740322348892195
 GameObject:
   m_ObjectHideFlags: 0

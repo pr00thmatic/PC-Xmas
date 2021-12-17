@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class SantaGiftGiver : MonoBehaviour {
+  // gift? true - coal? false, well spent?
+  public static event System.Action<bool, bool> onGiftSpent;
+
   [Header("Information")]
   public List<House> good;
   public List<House> evil;
@@ -13,13 +16,19 @@ public class SantaGiftGiver : MonoBehaviour {
   public Transform leftHouses;
   public Transform rightHouses;
   public Indicator nopeIndicator;
+  public Santa santa;
 
   void Update () {
+    if (santa.leg == -1) return;
+
     if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Z) ||
         Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.C)) {
       Transform houses = Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Z)? leftHouses: rightHouses;
       SendableThing thing = Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.E)? gift: coal;
-      if (!Send(thing, houses)) nopeIndicator.Spawn(transform);
+      bool wellSpent = Send(thing, houses);
+      if (!wellSpent) nopeIndicator.Spawn(transform);
+      else santa.leg = 3;
+      onGiftSpent?.Invoke(thing == gift, wellSpent);
     }
   }
 

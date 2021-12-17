@@ -10,7 +10,12 @@ public class SendableThing : MonoBehaviour {
   [Header("Information")]
   public House target;
 
+  [Header("Initialization")]
+  public ProgressDependantPosition position;
+
   public void GoTo (House house) {
+    // position.Initialize(transform.position);
+    position.enabled = false;
     transform.parent = house.transform;
     target = house;
     target.GetGift(this);

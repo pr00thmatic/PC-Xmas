@@ -8,4 +8,9 @@ public class Utils {
     copy.rotation = original.rotation;
     copy.localScale = original.localScale;
   }
+
+  public static Vector3 SetZ (Vector3 v, float z) {
+    v.z = z;
+    return v;
+  }
 }

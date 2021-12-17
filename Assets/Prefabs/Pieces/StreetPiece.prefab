@@ -106,6 +106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7474280766238467419}
   - component: {fileID: 7474280766238467412}
+  - component: {fileID: 1582062795882915452}
   m_Layer: 0
   m_Name: StreetPiece
   m_TagString: Untagged
@@ -141,9 +142,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87c79c4bd4ca4594c9f8ecf610eb24a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: {fileID: 1582062795882915452}
+--- !u!114 &1582062795882915452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7474280766238467418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdeb7a510c08585479821af3fec42d60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   despawnDistance: 20
   progressWhenSpawned: -100
-  santa: {fileID: 0}
   originalPosition: {x: 0, y: 0, z: 0}
   nextThing: {fileID: 7474280766861476924}
 --- !u!1 &7474280766861476867
