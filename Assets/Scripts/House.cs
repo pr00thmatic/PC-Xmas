@@ -7,15 +7,16 @@ public class House : MonoBehaviour {
   public float goodProbability = 0.6f;
   public float density = 0.25f;
 
-  // [Header("Information")]
-  public bool IsGood { get => good.activeSelf; }
-  public bool RequiresGift { get => good.activeSelf || evil.activeSelf; }
+  [Header("Information")]
   public bool receivedGift = false;
+  public bool IsGood { get => good.activeSelf; }
+  public bool RequiresGift { get => model.activeSelf && (good.activeSelf || evil.activeSelf); }
 
   [Header("Initialization")]
   public GameObject evil;
   public GameObject good;
   public Transform giftTarget;
+  public GameObject model;
 
   void OnEnable () {
     if (Random.Range(0,1f) <= density) {
@@ -27,5 +28,9 @@ public class House : MonoBehaviour {
   public void GetGift (SendableThing thing) {
     evil.SetActive(false);
     good.SetActive(false);
+  }
+
+  public void RegretSpawn () {
+    model.SetActive(false);
   }
 }

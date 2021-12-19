@@ -11,7 +11,7 @@ public class ProgressDependantSpawner : MonoBehaviour {
   public SpawnableInProgress lastSpawned;
 
   [Header("Initialization")]
-  public SpawnableInProgress toSpawn;
+  public SpawnableInProgress[] toSpawn;
   public Transform firstSpawnable;
   public Transform folder;
   public Santa santa;
@@ -23,7 +23,7 @@ public class ProgressDependantSpawner : MonoBehaviour {
   }
 
   public void SpawnNextThing () {
-    SpawnableInProgress spawned = Instantiate(toSpawn);
+    SpawnableInProgress spawned = Instantiate(Utils.RandomPick(toSpawn));
     spawned.Initialize(this);
     lastSpawned = spawned;
   }

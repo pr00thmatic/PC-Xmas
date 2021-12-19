@@ -13,4 +13,12 @@ public class Utils {
     v.z = z;
     return v;
   }
+
+  public static T RandomPick<T> (List<T> stuff) {
+    return stuff[Random.Range(0, stuff.Count)];
+  }
+
+  public static T RandomPick<T> (T[] stuff) {
+    return stuff[Random.Range(0, stuff.Length)];
+  }
 }
