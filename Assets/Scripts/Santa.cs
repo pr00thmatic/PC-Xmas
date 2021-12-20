@@ -8,7 +8,8 @@ public class Santa : NonPersistentSingleton<Santa> {
   [Header("Configuration")]
   public float timeToReturnToBoth = 1;
   public float tripTime = 0.25f;
-  public float[] metersByStepPerFall = new float[] { 5, 4, 3, 2, 1, 0.5f };
+  public float[] maxMetersByStepPerFall = new float[] { 10, 8, 6, 4, 2, 1 };
+  public float[] accelerationByStepPerFall = new float[] { 5, 4, 3, 2, 1, 0.5f };
 
   [Header("Information")]
   public float metersByStep = 0.2f;
@@ -19,13 +20,15 @@ public class Santa : NonPersistentSingleton<Santa> {
   public bool advancedThisFrame = false;
   public float elapsedTripTime = 0;
   public int currentFallLevel = 0;
+  public float Acceleration { get {
+      return accelerationByStepPerFall[Mathf.Min(accelerationByStepPerFall.Length-1, Mathf.Max(0, currentFallLevel))];
+    } }
+  public float MaxMetersByStep { get {
+      return maxMetersByStepPerFall[Mathf.Min(maxMetersByStepPerFall.Length-1, Mathf.Max(0, currentFallLevel))];
+    } }
 
   [Header("Initialization")]
   public Animator animator;
-
-  void OnEnable () {
-    metersByStep = metersByStepPerFall[currentFallLevel];
-  }
 
   void Update () {
     if (leg == -1) {
@@ -33,6 +36,7 @@ public class Santa : NonPersistentSingleton<Santa> {
       if (elapsedTripTime >= tripTime) {
         elapsedTripTime = 0;
         leg = 3;
+        metersByStep = 0;
       } else {
         return;
       }
@@ -41,6 +45,7 @@ public class Santa : NonPersistentSingleton<Santa> {
     advancedThisFrame = false;
     if (((leg == 0 || leg == 3) && Input.GetKeyDown(KeyCode.D)) ||
         ((leg == 1 || leg == 3) && Input.GetKeyDown(KeyCode.A))) {
+      metersByStep = Mathf.Min(MaxMetersByStep, metersByStep + Acceleration);
       Progress += metersByStep;
       leg = leg == 3? (Input.GetKeyDown(KeyCode.A)? 0: 1): (leg+1) % 2;
       advancedThisFrame = true;
@@ -50,9 +55,8 @@ public class Santa : NonPersistentSingleton<Santa> {
       timeSinceStroke = 0;
       if (!advancedThisFrame) {
         if (leg != -1) {
-          if (currentFallLevel < metersByStepPerFall.Length) {
+          if (currentFallLevel < maxMetersByStepPerFall.Length) {
             currentFallLevel++;
-            metersByStep = metersByStepPerFall[currentFallLevel];
           }
           onFall?.Invoke();
         }
@@ -60,8 +64,12 @@ public class Santa : NonPersistentSingleton<Santa> {
       }
     }
 
+    if (!advancedThisFrame) {
+      metersByStep = Mathf.Max(0, metersByStep - (MaxMetersByStep / 0.5f) * Time.deltaTime);
+    }
     if (timeSinceStroke >= timeToReturnToBoth && leg != 3) {
       leg = 3;
+      metersByStep = 0;
     }
 
     progress.Update();
