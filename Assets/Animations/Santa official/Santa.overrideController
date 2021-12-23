@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Santa
+  m_Controller: {fileID: 9100000, guid: 7282a9647347e1344a62bba23365f567, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: d58836f4cef7ba848ab7cd2b35da96b8, type: 2}
+    m_OverrideClip: {fileID: 3956129189253394072, guid: b98549a3778382d4a85fcb29a7ccd8e1, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 57cbae7c463df3341878cc2e61176f4e, type: 2}
+    m_OverrideClip: {fileID: -1264037095925866262, guid: b98549a3778382d4a85fcb29a7ccd8e1, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 0c73a9e8c2c49644a9b78536812bb0fd, type: 2}
+    m_OverrideClip: {fileID: -280351470764646712, guid: b98549a3778382d4a85fcb29a7ccd8e1, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 4ceddc39af19181429029800a03d6074, type: 2}
+    m_OverrideClip: {fileID: -5250544034819267712, guid: b98549a3778382d4a85fcb29a7ccd8e1, type: 3}

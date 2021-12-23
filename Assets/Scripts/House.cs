@@ -17,8 +17,11 @@ public class House : MonoBehaviour {
   public GameObject good;
   public Transform giftTarget;
   public GameObject model;
+  public GameObject inRangeIndicator;
 
   void OnEnable () {
+    inRangeIndicator.SetActive(false);
+    good.SetActive(false); evil.SetActive(false);
     if (Random.Range(0,1f) <= density) {
       good.SetActive(Random.Range(0, 1f) <= goodProbability);
       evil.SetActive(!IsGood);

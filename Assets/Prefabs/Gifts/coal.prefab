@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e62496ddbdd9c9e4d85d0ebdbcdbede9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 40
   isCoal: 0
   target: {fileID: 0}
   position: {fileID: 6998259437820283781}

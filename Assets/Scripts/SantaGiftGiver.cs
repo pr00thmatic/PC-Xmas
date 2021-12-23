@@ -37,20 +37,23 @@ public class SantaGiftGiver : MonoBehaviour {
     if (!house || !house.RequiresGift || house.receivedGift || good.Contains(house) || evil.Contains(house)) return;
 
     (house.IsGood? good: evil).Add(house);
+    house.inRangeIndicator.SetActive(true);
   }
 
   void OnTriggerExit (Collider c) {
     House house = c.GetComponentInParent<House>();
     if (!house) return;
     good.Remove(house); evil.Remove(house);
+    house.inRangeIndicator.SetActive(false);
   }
 
   public bool Send (SendableThing thing, Transform houses) {
     List<House> availableHouses = thing == gift? good: evil;
 
     for (int i=0; i<availableHouses.Count; i++) {
-      if (availableHouses[i].GetComponentInParent<ProgressDependantSpawner>().transform == houses) {
+      if (availableHouses[i] && availableHouses[i].GetComponentInParent<ProgressDependantSpawner>().transform == houses) {
         Send(thing, availableHouses[i]);
+        availableHouses[i].inRangeIndicator.SetActive(false);
         availableHouses.RemoveAt(i);
         return true;
       }

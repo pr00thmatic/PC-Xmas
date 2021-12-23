@@ -33,10 +33,10 @@ public class Santa : NonPersistentSingleton<Santa> {
   void Update () {
     if (leg == -1) {
       elapsedTripTime += Time.deltaTime;
+      metersByStep = 0;
       if (elapsedTripTime >= tripTime) {
         elapsedTripTime = 0;
         leg = 3;
-        metersByStep = 0;
       } else {
         return;
       }
@@ -74,6 +74,7 @@ public class Santa : NonPersistentSingleton<Santa> {
 
     progress.Update();
     animator.SetInteger("leg", leg);
+    animator.SetFloat("fucked up", 0.9f * (Mathf.Max(0, currentFallLevel) / (float) accelerationByStepPerFall.Length));
     timeSinceStroke += Time.deltaTime;
   }
 }
